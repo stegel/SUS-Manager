@@ -1,4 +1,6 @@
 <?php
+	use Carbon\Carbon;
+
 	class Score extends Eloquent{
 
 		protected $fillable = array('q1','q2','q3','q4','q5','q6','q7','q8','q9','q10');
@@ -14,6 +16,10 @@
 			$evens = 25-($this->q2 + $this->q4 + $this->q6 + $this->q8 + $this->q10);
 			return ($odds+$evens)*2.5;
 		}
+
+		public function getCreatedAtAttribute($attr) {
+        return Carbon::parse($attr)->format('Y-m-d @ h:ia'); //Change the format to whichever you desire
+    }
 
 		public static $rules = array(
 			'q1' => 'numeric|required||between:1,5',

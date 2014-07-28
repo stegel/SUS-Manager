@@ -7,7 +7,7 @@
 <h1>{{ $project->name }}</h1>
 <p>{{ $project->description }}</p>
 
-<table class="table">
+<table class="table table-striped table-bordered">
 
     <thead>
       <tr>
@@ -22,6 +22,8 @@
         <th>Q9</th>
         <th>Q10</th>
         <th>SUS</th>
+        <th>Created At</th>
+        <th></th>
       </tr>
     </thead>
   @foreach($project->scores as $score)
@@ -37,6 +39,7 @@
       <td>{{ $score->q9 }}</td>
       <td>{{ $score->q10 }}</td>
       <td>{{ $score->calculateSUS() }}</td>
+      <td>{{ $score->created_at }}</td>
       <td>{{ Form::open(array('method' => 'DELETE', 'route' => array('scores.destroy', $score->id))) }}
             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
           {{ Form::close() }}
@@ -44,7 +47,7 @@
     </tr>
   @endforeach
     <tr>
-      <td colspan="11">{{ link_to_route('projects.scores.create', 'Add Score', $project->id, array("class" => 'btn btn-primary'))}}</td>
+      <td colspan="13" style="text-align:center;">{{ link_to_route('projects.scores.create', 'Add New Survey', $project->id, array("class" => 'btn btn-block btn-primary'))}}</td>
     </tr>
 </table>
 <h2>Project SUS: {{ $project->calculateSUS() }}</h2>
