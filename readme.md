@@ -1,4 +1,4 @@
-## SUS Calculator
+## SUS Manager
 
 This is a small tool built to track System Usability Scale (SUS) scores across multiple projects. You can learn about SUS on [Measuring Usability](http://www.measuringusability.com/sus.php)
 ## Official Documentation
