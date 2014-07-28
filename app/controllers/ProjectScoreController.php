@@ -7,9 +7,11 @@ class ProjectScoreController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($id)
 	{
-		//
+		$project = Project::find($id);
+
+		return View::make('projects.show',compact('project'));
 	}
 
 

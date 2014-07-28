@@ -5,20 +5,18 @@
 <h1>Create Project</h1>
 
 {{ Form::open(array('route' => 'projects.store')) }}
-	<ul>
-		<li>
-			{{ Form::label('name', 'Name:') }}
-			{{ Form::text('name') }}
-		</li>
-		<li>
+	<div class="form-group">
+		{{ Form::label('name', 'Name:') }}
+		{{ Form::text('name', null, ['class' => 'form-control']) }}
+	</div>
+	<div class="form-group">
 			{{ Form::label('description', 'Description:') }}
-			{{ Form::textarea('description', null, ['size' => '20x3']) }}
-		</li>
-		<li>
+			{{ Form::textarea('description', null, ['class' => 'form-control','size' => '20x3']) }}
+	</div>
+	<div class="form-group">
 			{{ Form::submit('Submit', array('class' => 'btn')) }}
 			{{ link_to_route('projects.index', 'Cancel', array(), array("class" => 'btn'))}}
-		</li>
-	</ul>
+	</div>
 {{ Form::close() }}
 
 @if ($errors->any())

@@ -1,8 +1,12 @@
 @extends('layouts.layout')
 @section('main')
-
+<div class="btn-group">
+  <button type="ubtton" class="btn btn-default">{{ link_to_route("projects.index", "View Projects")}}</button>
+  <button type="ubtton" class="btn btn-default">{{ link_to_route("projects.create", "Add Projects")}}</button>
+</div>
 <h1>{{ $project->name }}</h1>
 <p>{{ $project->description }}</p>
+
 <table class="table">
 
     <thead>
