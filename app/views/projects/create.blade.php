@@ -1,4 +1,4 @@
-@extends('project')
+@extends('layouts.layout')
 
 @section('main')
 

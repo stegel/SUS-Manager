@@ -1,4 +1,4 @@
-@extends('project')
+@extends('layouts.layout')
 @section('main')
 
 <h1>All Users</h1>
