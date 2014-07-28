@@ -2,8 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link href="///netdna.bootstrapcdn.com/twitter-bootstrap
-/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<style>
 			table form { margin-bottom: 0; }
 			form ul { margin-left: 0; list-style: none; }
@@ -11,7 +10,7 @@
 			body { padding-top: 20px; }
 		</style>
 	</head>
-	
+
 	<body>
 		<div class="container">
 			@if (Session::has('message'))

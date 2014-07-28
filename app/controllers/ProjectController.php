@@ -10,7 +10,7 @@ class ProjectController extends \BaseController {
 	public function index()
 	{
 		//
-		$projects = Project::all();
+		$projects = Project::paginate(10);
 
 		return View::make('projects.index', compact('projects'));
 	}
@@ -70,7 +70,9 @@ class ProjectController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$project = Project::find($id);
+
+		return View::make("projects.edit",compact('project'));
 	}
 
 
@@ -82,7 +84,18 @@ class ProjectController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+
+		$validation = Validator::make($input, Project::$rules);
+
+		if($validation->passes())
+		{
+			$project = Project::find($id);
+			$project->update($input);
+			return Redirect::route('projects.show', $id);
+		}
+
+		return Redirect::route('projects.edit', $id)->withInput()->withErrors($validation)->with('message', 'There were validation errors.');
 	}
 
 
