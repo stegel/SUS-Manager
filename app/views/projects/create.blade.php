@@ -16,6 +16,7 @@
 		</li>
 		<li>
 			{{ Form::submit('Submit', array('class' => 'btn')) }}
+			{{ link_to_route('projects.index', 'Cancel', array(), array("class" => 'btn'))}}
 		</li>
 	</ul>
 {{ Form::close() }}

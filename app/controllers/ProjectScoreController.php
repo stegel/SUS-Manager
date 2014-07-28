@@ -31,23 +31,23 @@ class ProjectScoreController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($projectId)
 	{
 		$input = Input::except('project_id');
 		$validation = Validator::make($input, Score::$rules);
 
+		$project = Project::find($projectId);
+
 		if($validation->passes())
 		{
 			$score = Score::create($input);
-
-			$project = Project::find(Input::get('project_id'));
 
 			$score = $project->scores()->save($score);
 
 			return Redirect::route('projects.show',$project->id);
 		}
 
-		return Redirect::route('projects.create')->withInput()->withErrors($validation)->with('message', 'There were validation errors.');
+		return Redirect::route('projects.scores.create',$project->id)->withInput()->withErrors($validation)->with('message', 'There were validation errors.');
 	}
 
 
@@ -95,7 +95,8 @@ class ProjectScoreController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Score::find($id)->delete();
+		return Redirect::route('projects.index');
 	}
 
 

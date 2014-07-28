@@ -3,8 +3,8 @@
 
 <h1>{{ $project->name }}</h1>
 <p>{{ $project->description }}</p>
-<table>
-  <table>
+<table class="table">
+
     <thead>
       <tr>
         <th>Q1</th>
@@ -33,7 +33,14 @@
       <td>{{ $score->q9 }}</td>
       <td>{{ $score->q10 }}</td>
       <td>{{ $score->calculateSUS() }}</td>
+      <td>{{ Form::open(array('method' => 'DELETE', 'route' => array('scores.destroy', $score->id))) }}
+            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+          {{ Form::close() }}
+      </td>
     </tr>
   @endforeach
+    <tr>
+      <td colspan="11">{{ link_to_route('projects.scores.create', 'Add Score', $project->id, array("class" => 'btn btn-primary'))}}</td>
+    </tr>
 </table>
 <h2>Project SUS: {{ $project->calculateSUS() }}</h2>

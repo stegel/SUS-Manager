@@ -81,8 +81,11 @@ class ScoresController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
-	}
+		$score = Score::find($id);
+		$project = $score->project;
+		$score->delete();
+		return Redirect::route('projects.show',$project->id);
+}
 
 
 }

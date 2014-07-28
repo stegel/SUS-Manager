@@ -16,16 +16,16 @@
 		}
 
 		public static $rules = array(
-			'q1' => 'required|min:1|max:5',
-			'q2' => 'required|min:1|max:5',
-			'q3' => 'required|min:1|max:5',
-			'q4' => 'required|min:1|max:5',
-			'q5' => 'required|min:1|max:5',
-			'q6' => 'required|min:1|max:5',
-			'q7' => 'required|min:1|max:5',
-			'q8' => 'required|min:1|max:5',
-			'q9' => 'required|min:1|max:5',
-			'q10' => 'required|min:1|max:5',
+			'q1' => 'numeric|required||between:1,5',
+			'q2' => 'numeric|required||between:1,5',
+			'q3' => 'numeric|required||between:1,5',
+			'q4' => 'numeric|required||between:1,5',
+			'q5' => 'numeric|required||between:1,5',
+			'q6' => 'numeric|required||between:1,5',
+			'q7' => 'numeric|required||between:1,5',
+			'q8' => 'numeric|required||between:1,5',
+			'q9' => 'numeric|required||between:1,5',
+			'q10' => 'numeric|required||between:1,5',
 			);
 	}
 ?>

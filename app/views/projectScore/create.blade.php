@@ -3,7 +3,7 @@
 @section('main')
 
 <h1>Enter scores for {{ $project->name }}</h1>
-{{ Form::open(array('route' => 'projects.scores.store')) }}
+{{ Form::open(array('route' =>array('projects.scores.store',$project->id))) }}
 
   <ul>
     <li>
@@ -49,6 +49,15 @@
     <li>
       {{ Form::hidden('project_id',$project->id) }}
       {{ Form::submit('Submit', array('class' => 'btn')) }}
+      {{ link_to_route('projects.show', 'Cancel', $project->id, array("class" => 'btn'))}}
     </li>
   </ul>
 {{ Form::close() }}
+
+@if ($errors->any())
+  <ul>
+    {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+  </ul>
+@endif
+
+@stop
