@@ -16,5 +16,9 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+
 Route::resource('projects', 'ProjectController');
 Route::resource('scores', 'ScoresController');
+Route::resource('projects.scores','ProjectScoreController');
+
+?>

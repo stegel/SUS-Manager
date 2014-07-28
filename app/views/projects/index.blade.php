@@ -21,6 +21,7 @@
 					<p>No Scores</p>
 				@endif
 			</td>
+			<td>{{ link_to_route('projects.scores.create',"Add Scores",array($project->id),array("class" => "btn"))}}
 			<td>{{ link_to_route('projects.edit', 'Edit', array($project->id), array('class' => 'btn btn-info')) }}</td>
 			<td>{{ Form::open(array('method' => 'DELETE', 'route' => array('projects.destroy', $project->id))) }}
 					{{ Form::submit('Delete', array('class' => 'btn btn-dnager')) }}

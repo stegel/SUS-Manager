@@ -1,17 +1,15 @@
 <?php
 
-class ScoresController extends \BaseController {
+class ProjectScoreController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index($id)
+	public function index()
 	{
-		$scores = Score::all();
-
-		return View::make('scores.index', compact('scores'));
+		//
 	}
 
 
@@ -20,9 +18,11 @@ class ScoresController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($projectId)
 	{
-		//
+		$project = Project::find($projectId);
+
+		return View::make('projectScore.create',array('project' => $project));
 	}
 
 
@@ -33,7 +33,21 @@ class ScoresController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except('project_id');
+		$validation = Validator::make($input, Score::$rules);
+
+		if($validation->passes())
+		{
+			$score = Score::create($input);
+
+			$project = Project::find(Input::get('project_id'));
+
+			$score = $project->scores()->save($score);
+
+			return Redirect::route('projects.show',$project->id);
+		}
+
+		return Redirect::route('projects.create')->withInput()->withErrors($validation)->with('message', 'There were validation errors.');
 	}
 
 
