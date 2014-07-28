@@ -10,6 +10,10 @@
 		{{ Form::text('name', null, ['class' => 'form-control']) }}
 	</div>
 	<div class="form-group">
+		{{ Form::label('study_date', 'Date of STudy:') }}
+		{{ Form::text('study_date', null, ['class' => 'form-control']) }}
+	</div>
+	<div class="form-group">
 			{{ Form::label('description', 'Description:') }}
 			{{ Form::textarea('description', null, ['class' => 'form-control','size' => '20x3']) }}
 	</div>
