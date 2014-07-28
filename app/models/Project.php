@@ -1,7 +1,7 @@
 <?php
 	class Project extends Eloquent{
 
-		protected $fillable = array('name', 'description');
+		protected $fillable = array('name', 'description', 'study_date');
 
 		public function scores()
 		{
