@@ -46,6 +46,8 @@ class ProjectScoreController extends \BaseController {
 
 			$score = $project->scores()->save($score);
 
+			//$project->calculateSUS();
+
 			return Redirect::route('projects.show',$project->id);
 		}
 

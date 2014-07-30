@@ -26,28 +26,30 @@
         <th></th>
       </tr>
     </thead>
-  @foreach($project->scores as $score)
-    <tr>
-      <td>{{ $score->q1 }}</td>
-      <td>{{ $score->q2 }}</td>
-      <td>{{ $score->q3 }}</td>
-      <td>{{ $score->q4 }}</td>
-      <td>{{ $score->q5 }}</td>
-      <td>{{ $score->q6 }}</td>
-      <td>{{ $score->q7 }}</td>
-      <td>{{ $score->q8 }}</td>
-      <td>{{ $score->q9 }}</td>
-      <td>{{ $score->q10 }}</td>
-      <td>{{ $score->calculateSUS() }}</td>
-      <td>{{ $score->created_at }}</td>
-      <td>{{ Form::open(array('method' => 'DELETE', 'route' => array('scores.destroy', $score->id))) }}
-            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-          {{ Form::close() }}
-      </td>
-    </tr>
-  @endforeach
+  @if (count($project->scores) > 0)
+    @foreach($project->scores as $score)
+      <tr>
+        <td>{{ $score->q1 }}</td>
+        <td>{{ $score->q2 }}</td>
+        <td>{{ $score->q3 }}</td>
+        <td>{{ $score->q4 }}</td>
+        <td>{{ $score->q5 }}</td>
+        <td>{{ $score->q6 }}</td>
+        <td>{{ $score->q7 }}</td>
+        <td>{{ $score->q8 }}</td>
+        <td>{{ $score->q9 }}</td>
+        <td>{{ $score->q10 }}</td>
+        <td>{{ $score->sus }}</td>
+        <td>{{ $score->created_at }}</td>
+        <td>{{ Form::open(array('method' => 'DELETE', 'route' => array('scores.destroy', $score->id))) }}
+              {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+            {{ Form::close() }}
+        </td>
+      </tr>
+    @endforeach
+  @endif
     <tr>
       <td colspan="13" style="text-align:center;">{{ link_to_route('projects.scores.create', 'Add New Survey', $project->id, array("class" => 'btn btn-block btn-primary'))}}</td>
     </tr>
 </table>
-<h2>Project SUS: {{ $project->calculateSUS() }}</h2>
+<h2>Project SUS: {{ round($project->sus,2) }}</h2>

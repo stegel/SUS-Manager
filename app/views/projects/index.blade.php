@@ -16,11 +16,9 @@
 		<tr>
 			<td>{{ $project->name }}</td>
 			<td>{{ $project->description }}</td>
-			<td>@if(count($project->scores) > 0)
-					{{ $project->calculateSUS() }}
-				@else
-					<p>No Scores</p>
-				@endif
+			<td>
+					{{ round($project->sus,2) }}
+
 			</td>
 			<td>{{ link_to_route('projects.scores.create',"Add",array($project->id),array("class" => "btn btn-default"))}} {{ link_to_route('projects.scores.show',"View",array($project->id),array("class" => "btn btn-default"))}}</td>
 			<td>{{ link_to_route('projects.edit', 'Edit', array($project->id), array('class' => 'btn btn-info')) }}</td>

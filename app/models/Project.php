@@ -8,7 +8,16 @@
 			return $this->hasMany("Score");
 		}
 
-		public function calculateSUS()
+		public static function boot()
+		{
+			parent::boot();
+
+			static::saved(function($project){
+				Log::error("Project saved");
+			});
+		}
+
+		public static function calculateSUS()
 		{
 			$scores = $this->scores;
 
@@ -19,8 +28,10 @@
 				$combinedSUS += $score->calculateSUS();
 			}
 
-			return round(($combinedSUS / count($scores)),2);
-		}	
+			$this->sus = $combinedSUS / count($scores);
+		}
+
+
 
 		public static $rules = array(
 			'name' => 'required|min:5');
